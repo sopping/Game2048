@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="cardTextSizeLv2">28</integer>
+    <integer name="cardTextSizeLv1024">24</integer>
+    <integer name="gridColumns">4</integer>
+    <integer name="gridRows">4</integer>
+</resources>
