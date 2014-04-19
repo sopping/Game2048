@@ -1,12 +1,12 @@
 package com.example.game2048;
 /**
- * Ò»Ğ©³£Êı
+ * ä¸€äº›å¸¸æ•°
  * @author Administrator
  *
  */
 public class Constants {
-	/* XÖáÎ»ÒÆ×îĞ¡ÏìÓ¦Á¿ */
+	/* Xè½´ä½ç§»æœ€å°å“åº”é‡ */
 	public static final float OFFSET_X_MIN = 5.0f;
-	/* YÖáÎ»ÒÆ×îĞ¡ÏìÓ¦Á¿ */
+	/* Yè½´ä½ç§»æœ€å°å“åº”é‡ */
 	public static final float OFFSET_Y_MIN = 5.0f;
 }

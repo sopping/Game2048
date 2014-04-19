@@ -6,7 +6,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.GridLayout;
 /**
- * ÓÎÏ·Ö÷³ÌĞò
+ * æ¸¸æˆä¸»ç¨‹åº
  * @author Administrator
  *
  */
@@ -28,7 +28,7 @@ public class GameView extends GridLayout {
 	}
 	
 	/**
-	 * ÓÎÏ·³õÊ¼»¯·½·¨
+	 * æ¸¸æˆåˆå§‹åŒ–æ–¹æ³•
 	 */
 	private void initGameView(){
 		setOnTouchListener(new OnTouchListener() {
@@ -46,7 +46,7 @@ public class GameView extends GridLayout {
 				case MotionEvent.ACTION_UP:
 					offsetX = motionEvent.getX() - startX;
 					offsetY = motionEvent.getY() - startY;
-					//XÖáÎ»ÒÆ
+					//Xè½´ä½ç§»
 					if(Math.abs(offsetX) > Math.abs(offsetY)){
 						if(offsetX > Constants.OFFSET_X_MIN){
 							swipeRight();
@@ -69,25 +69,25 @@ public class GameView extends GridLayout {
 	}
 	
 	/**
-	 * ÏòÓÒ»®
+	 * å‘å³åˆ’
 	 */
 	private void swipeRight() {
 		System.out.println("right");
 	}
 	/**
-	 * Ïò×ó»®
+	 * å‘å·¦åˆ’
 	 */
 	private void swipeLeft() {
 		System.out.println("left");
 	}
 	/**
-	 * ÏòÏÂ»®
+	 * å‘ä¸‹åˆ’
 	 */
 	private void swipeDown() {
 		System.out.println("Down");
 	}
 	/**
-	 * ÏòÉÏ»®
+	 * å‘ä¸Šåˆ’
 	 */
 	private void swipeUp() {
 		System.out.println("up");
