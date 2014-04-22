@@ -8,7 +8,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +22,7 @@ public class GameView extends GridLayout {
 
     private Card[][] cardsMap;
     private List<Card> emptyCardsList = new ArrayList<Card>();
+
 
     public GameView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
@@ -48,7 +48,6 @@ public class GameView extends GridLayout {
         setRowCount(getResources().getInteger(R.integer.gridRows));
         setBackgroundColor(getResources().getColor(R.color.gridBgcolor));
 
-        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(-1, -1);//填充父级容器
         setOnTouchListener(new OnTouchListener() {
 
 			private float startX, startY, offsetX, offsetY;
@@ -169,29 +168,8 @@ public class GameView extends GridLayout {
     }
 
     /**
-     * 顺序合并
-     *
-     * @param numbers
-     * @param mainActivity
-     * @return
+     * 检查游戏是否结束
      */
-    private List<Integer> combine(List<Integer> numbers, MainActivity mainActivity){
-        List<Integer> result = new ArrayList<Integer>();
-        for(int i=0,len=numbers.size();i<len;i++){
-            if(i < len - 1 && numbers.get(i).equals(numbers.get(i + 1))){
-                result.add(numbers.get(i) * 2);
-                if(mainActivity != null){
-                    mainActivity.addScore(numbers.get(i) * 2);
-                }
-                i++;
-                continue;
-            }else{
-                result.add(numbers.get(i));
-            }
-        }
-        return result;
-    }
-
     private void checkGameOver(){
         if(emptyCardsList.size() != 0){
             return;
@@ -213,6 +191,30 @@ public class GameView extends GridLayout {
                         reloadGame();
                     }
                 }).show();
+    }
+
+    /**
+     * 顺序合并
+     *
+     * @param numbers
+     * @param mainActivity
+     * @return
+     */
+    private List<Integer> combine(List<Integer> numbers, MainActivity mainActivity){
+        List<Integer> result = new ArrayList<Integer>();
+        for(int i=0,len=numbers.size();i<len;i++){
+            if(i < len - 1 && numbers.get(i).equals(numbers.get(i + 1))){
+                result.add(numbers.get(i) * 2);
+                if(mainActivity != null){
+                    mainActivity.addScore(numbers.get(i) * 2);
+                }
+                i++;
+                continue;
+            }else{
+                result.add(numbers.get(i));
+            }
+        }
+        return result;
     }
 
     /**
@@ -356,5 +358,77 @@ public class GameView extends GridLayout {
             checkGameOver();
         }
 	}
+
+
+    private void swipeUp2() {
+        boolean exchanged = false;
+        long score = 0;
+        for(int x=0;x<getColumnCount();x++){
+            NumberArray array = new NumberArray(getRowCount());
+            for(int y=0;y<getRowCount();y++){
+                array.addCard(cardsMap[y][x]);
+            }
+
+            array.combine();
+            int[] result = array.getResult();
+            score += array.getScore();
+
+            for(int y=0;y<getRowCount();y++){
+                if(cardsMap[y][x].getNumber() != result[y]){
+                    exchanged = true;
+                    if(cardsMap[y][x].getNumber() == 0){
+                        emptyCardsList.remove(cardsMap[y][x]);
+                    }else{
+                        emptyCardsList.add(cardsMap[y][x]);
+                    }
+                }
+                cardsMap[y][x].setNumber(result[y]);
+            }
+        }
+        MainActivity.getMainActivity().addScore(score);
+        if(exchanged){
+            addRandomNum();
+            checkGameOver();
+        }
+    }
+
+    private class NumberArray {
+        private int[] nonZeroArray;//非零数组
+        private int[] result;//最终结果
+        private long score = 0;
+        private int index = 0;
+
+        NumberArray(int length) {
+            this.nonZeroArray = new int[length];
+            this.result = new int[length];
+        }
+
+        void addCard(Card c){
+            if(c.getNumber() >= 0){
+                nonZeroArray[index++] = c.getNumber();
+            }
+        }
+
+        void combine(){
+            for(int i=0;i<=index-1;i++){
+                if(nonZeroArray[i] == nonZeroArray[i+1]){
+                    result[i] = nonZeroArray[i] * 2;
+                    score += result[i];
+                    i++;
+                }else{
+                    result[i] = nonZeroArray[i];
+                }
+            }
+            //System.arraycopy(nonZeroArray, index, result, index, result.length);
+        }
+
+        long getScore() {
+            return score;
+        }
+
+        int[] getResult() {
+            return result;
+        }
+    }
 }
 
