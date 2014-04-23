@@ -19,4 +19,7 @@
     <color name="cardTextColorLvGt8">#fff9f6f2</color>
 
     <color name="gridBgcolor">#ff776e65</color>
+
+    <color name="buttonColor">#ff8f7a66</color>
+    <color name="scoreBgcolor">#ffbbada0</color>
 </resources>

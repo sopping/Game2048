@@ -38,7 +38,12 @@ public class GameView extends GridLayout {
 		super(context);
 		initGameView();
 	}
-	
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int minSpec = Math.min(widthMeasureSpec, heightMeasureSpec);
+        super.onMeasure(minSpec, minSpec);
+    }
 	/**
 	 * 游戏初始化方法
 	 */
@@ -92,7 +97,7 @@ public class GameView extends GridLayout {
         int cardWidth = (int) ((Math.min(w, h) - getResources().getDimension(R.dimen.grid_marigin) ) / getColumnCount());
         int cardHeight = (int) ((Math.min(w, h) - getResources().getDimension(R.dimen.grid_marigin)) / getRowCount());
         addCards(cardWidth, cardHeight);
-        startGame();
+        //startGame();
     }
 
     /**

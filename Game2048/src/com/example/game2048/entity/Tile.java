@@ -7,51 +7,44 @@ import java.io.Serializable;
  */
 public class Tile implements Serializable{
 
-    private int x;
-    private int y;
     private long value = 0;
+    private Position position;
     private transient Tile[] mergedFrom;
     private Position previousPosition;
 
     public Tile(Position position, long value) {
-        this.x = position.getX();
-        this.y = position.getY();
+        this.position = position;
         this.value = value;
     }
 
     /**
      * 保存之前的位置
      */
-    @Deprecated
     public void savePosition(){
-        this.previousPosition.setX(x);
-        this.previousPosition.setY(y);
+        this.previousPosition.setX(position.getX());
+        this.previousPosition.setY(position.getY());
     }
 
     /**
      * 更新位置
-     * @param x
-     * @param y
+     * @param position
+     *
      */
-    public void updatePosition(int x,int y){
-        this.x = x;
-        this.y = y;
+    public void updatePosition(Position position){
+        this.position.setX(position.getX());
+        this.position.setY(position.getY());
     }
 
     public int getX() {
-        return x;
+        return position.getX();
     }
 
     public int getY() {
-        return y;
+        return position.getY();
     }
 
     public long getValue() {
         return value;
-    }
-
-    public void setValue(long value) {
-        this.value = value;
     }
 
     public Tile[] getMergedFrom() {

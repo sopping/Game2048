@@ -2,20 +2,22 @@ package com.example.game2048.entity;
 
 import com.example.game2048.util.Function;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 方格
  */
-public class Grid {
+public class Grid implements Serializable{
 
     private int size;
     private Tile[][] cells;
 
     public Grid(int size, Tile[][] previousState) {
         this.size = size;
-        this.cells = previousState != null ? fromState(previousState) : new Tile[this.size][this.size];
+        this.cells = (previousState != null && previousState.length == size) ?
+                            fromState(previousState) : new Tile[this.size][this.size];
     }
 
     /**
@@ -32,6 +34,21 @@ public class Grid {
         return cells;
     }
 
+    /**
+     * 插入方格
+     * @param tile
+     */
+    public void insertTile(Tile tile){
+        cells[tile.getX()][tile.getY()] = tile;
+    }
+
+    /**
+     * 移除方格
+     * @param tile
+     */
+    public void removeTile(Tile tile){
+        cells[tile.getX()][tile.getY()] = null;
+    }
     /**
      * 遍历方格，调用callback，参数是x、y、cells[x][y]
      * @param callback
@@ -122,10 +139,16 @@ public class Grid {
      * @param position
      * @return
      */
-    private boolean withinBounds(Position position) {
+    public boolean withinBounds(Position position) {
         return position.getX() >= 0 && position.getX() < size &&
                 position.getY() > 0 && position.getY() < size;
     }
 
+    public int getSize() {
+        return size;
+    }
 
+    public Tile[][] getCells() {
+        return cells;
+    }
 }
