@@ -21,9 +21,7 @@ public class Actuator {
     /**
      * 清除提示信息
      */
-    public void clearMessage(
-
-    ){
+    public void clearMessage(){
 
     }
 

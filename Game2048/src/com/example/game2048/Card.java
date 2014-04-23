@@ -18,8 +18,10 @@ public class Card extends FrameLayout {
 
         label = new TextView(getContext());
         label.setGravity(Gravity.CENTER);
+        label.setBackgroundResource(R.drawable.tile);
         LayoutParams lp = new LayoutParams(-1, -1);//填充父级容器
-        lp.setMargins(getResources().getDimensionPixelSize(R.dimen.card_marigin), getResources().getDimensionPixelSize(R.dimen.card_marigin), 0, 0);
+        int margin =  getResources().getDimensionPixelSize(R.dimen.tile_marigin);
+        lp.setMargins(margin, margin, margin, margin);
         addView(label, lp);
         setNumber(0);
     }

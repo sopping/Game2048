@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.game2048.view.GameView xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -47,7 +47,7 @@
                         android:gravity="center_horizontal|center_vertical"
                         android:textColor="@color/cardTextColorLvGt8"
                         android:text="@string/score"/>
-                <TextView
+                <com.example.game2048.view.ScoreView
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -71,7 +71,7 @@
                         android:textColor="@color/cardTextColorLvGt8"
                         android:text="@string/bestScore"/>
 
-                <TextView
+                <com.example.game2048.view.BestScoreView
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/cardTextColorLvGt8"
                 android:text="@string/new_game"
-                android:background="@drawable/radiusButton"></Button>
+                android:background="@drawable/radius_button"></Button>
         </LinearLayout>
     </LinearLayout>
 
@@ -121,10 +121,11 @@
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical|center_horizontal">
-        <com.example.game2048.GameView
+        <com.example.game2048.view.GridView
                 android:id="@+id/gameView"
                 android:layout_width="fill_parent"
-                android:layout_height="match_parent">
-        </com.example.game2048.GameView>
+                android:background="@drawable/grid"
+                android:layout_height="fill_parent">
+        </com.example.game2048.view.GridView>
     </LinearLayout>
-</LinearLayout>
+</com.example.game2048.view.GameView>

@@ -5,6 +5,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="offset_min_x">5dp</dimen>
     <dimen name="offset_min_y">5dp</dimen>
-    <dimen name="grid_marigin">10px</dimen>
-    <dimen name="card_marigin">10px</dimen>
+    <dimen name="grid_marigin">5dp</dimen>
+    <dimen name="tile_marigin">5dp</dimen>
 </resources>
