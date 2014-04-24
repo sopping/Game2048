@@ -51,7 +51,6 @@ public class GameView extends GridLayout {
 
         setColumnCount(getResources().getInteger(R.integer.gridColumns));
         setRowCount(getResources().getInteger(R.integer.gridRows));
-        setBackgroundColor(getResources().getColor(R.color.gridBgcolor));
 
         setOnTouchListener(new OnTouchListener() {
 

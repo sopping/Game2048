@@ -1,7 +1,7 @@
 package com.example.game2048.util;
 
 /**
- * Created by Administrator on 14-4-22.
+ * 函数式编程
  */
 public abstract class Function {
     /**
