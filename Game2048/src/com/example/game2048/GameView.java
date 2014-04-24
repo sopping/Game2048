@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.GridLayout;
 
 import java.util.ArrayList;
@@ -49,8 +48,8 @@ public class GameView extends GridLayout {
 	 */
 	private void initGameView(){
 
-        setColumnCount(getResources().getInteger(R.integer.gridColumns));
-        setRowCount(getResources().getInteger(R.integer.gridRows));
+        setColumnCount(getResources().getInteger(R.integer.size));
+        setRowCount(getResources().getInteger(R.integer.size));
 
         setOnTouchListener(new OnTouchListener() {
 
@@ -69,15 +68,15 @@ public class GameView extends GridLayout {
 					offsetY = motionEvent.getY() - startY;
 					//X轴位移
 					if(Math.abs(offsetX) > Math.abs(offsetY)){
-						if(offsetX > getResources().getDimensionPixelSize(R.dimen.offset_min_x)){
+						if(offsetX > getResources().getDimensionPixelSize(R.dimen.offset_min)){
 							swipeRight();
-						}else if(offsetX < -getResources().getDimensionPixelSize(R.dimen.offset_min_x)){
+						}else if(offsetX < -getResources().getDimensionPixelSize(R.dimen.offset_min)){
 							swipeLeft();
 						}
 					}else{
-						if(offsetY > getResources().getDimensionPixelSize(R.dimen.offset_min_y)){
+						if(offsetY > getResources().getDimensionPixelSize(R.dimen.offset_min)){
 							swipeDown();
-						}else if(offsetY < -getResources().getDimensionPixelSize(R.dimen.offset_min_y)){
+						}else if(offsetY < -getResources().getDimensionPixelSize(R.dimen.offset_min)){
 							swipeUp();
 						}
 					}
@@ -121,7 +120,7 @@ public class GameView extends GridLayout {
     public void startGame(){
         addRandomNum();
         addRandomNum();
-        MainActivity.getMainActivity().clearScore();
+//        MainActivity.getMainActivity().clearScore();
 //        for(int i = 1;i <= 14 ;i++){
 //            addNumer((int) Math.pow(2, i));
 //        }
@@ -210,7 +209,7 @@ public class GameView extends GridLayout {
             if(i < len - 1 && numbers.get(i).equals(numbers.get(i + 1))){
                 result.add(numbers.get(i) * 2);
                 if(mainActivity != null){
-                    mainActivity.addScore(numbers.get(i) * 2);
+//                    mainActivity.addScore(numbers.get(i) * 2);
                 }
                 i++;
                 continue;
@@ -389,7 +388,7 @@ public class GameView extends GridLayout {
                 cardsMap[y][x].setNumber(result[y]);
             }
         }
-        MainActivity.getMainActivity().addScore(score);
+//        MainActivity.getMainActivity().addScore(score);
         if(exchanged){
             addRandomNum();
             checkGameOver();

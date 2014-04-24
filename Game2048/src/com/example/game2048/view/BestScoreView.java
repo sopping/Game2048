@@ -11,4 +11,19 @@ public class BestScoreView extends TextView{
         super(context);
     }
 
+    /**
+     * 展示最高分
+     * @param score
+     */
+    public void showBestScore(long score){
+        setText(score + "");
+    }
+
+    /**
+     * 清除最高分，即展示0分
+     */
+    public void clearBestScore(){
+        showBestScore(0);
+    }
+
 }

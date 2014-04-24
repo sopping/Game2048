@@ -24,6 +24,7 @@ public class GameManager implements Serializable{
     private int size;
     private Grid grid;
     private long score;
+    private long bestscore;
     private boolean over;
     private boolean won;
     private boolean keepPlaying;
@@ -41,7 +42,6 @@ public class GameManager implements Serializable{
      */
     public void restart(){
         storageManager.clearGameManager();
-        actuator.continueGame();
         setup();
     }
 
@@ -50,7 +50,6 @@ public class GameManager implements Serializable{
      */
     public void keepPlaying(){
         setKeepPlaying(true);
-        actuator.continueGame();
     }
 
     /**
@@ -105,7 +104,6 @@ public class GameManager implements Serializable{
             if(!movesAvailable()){
                 setOver(true);
             }
-
             actuate();
         }
     }
@@ -167,6 +165,7 @@ public class GameManager implements Serializable{
     public void actuate(){
         if(storageManager.getBestScore() < score){
             storageManager.setBestScore(score);
+            this.bestscore = score;
         }
 
         if(isOver()){
@@ -174,7 +173,7 @@ public class GameManager implements Serializable{
         }else{
             storageManager.setGameManager(this);
         }
-        actuator.actuate(this.grid, this);
+        actuator.actuate(this);
     }
 
     /**
@@ -343,5 +342,9 @@ public class GameManager implements Serializable{
 
     public void setKeepPlaying(boolean keepPlaying) {
         this.keepPlaying = keepPlaying;
+    }
+
+    public long getBestscore() {
+        return bestscore;
     }
 }

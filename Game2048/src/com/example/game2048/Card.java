@@ -5,6 +5,8 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.example.game2048.util.Constants;
+
 /**
  * 卡片
  */

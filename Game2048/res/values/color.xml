@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="cardBgcolorLv0">#ffbbada0</color>
-    <color name="cardBgcolorLv2">#ffe4eeda</color>
-    <color name="cardBgcolorLv4">#ffede0c8</color>
-    <color name="cardBgcolorLv8">#fff2b179</color>
-    <color name="cardBgcolorLv16">#fff59563</color>
-    <color name="cardBgcolorLv32">#fff67c5f</color>
-    <color name="cardBgcolorLv64">#fff65e3b</color>
-    <color name="cardBgcolorLv128">#ffedcf72</color>
-    <color name="cardBgcolorLv256">#ffedcc61</color>
-    <color name="cardBgcolorLv512">#ffedc850</color>
-    <color name="cardBgcolorLv1024">#ffedc53f</color>
-    <color name="cardBgcolorLv2048">#ffedc22e</color>
-    <color name="cardBgcolorLvSuper">#ff3c3a32</color>
+    <color name="tileBgcolorLv0">#ffbbada0</color>
+    <color name="tileBgcolorLv2">#ffe4eeda</color>
+    <color name="tileBgcolorLv4">#ffede0c8</color>
+    <color name="tileBgcolorLv8">#fff2b179</color>
+    <color name="tileBgcolorLv16">#fff59563</color>
+    <color name="tileBgcolorLv32">#fff67c5f</color>
+    <color name="tileBgcolorLv64">#fff65e3b</color>
+    <color name="tileBgcolorLv128">#ffedcf72</color>
+    <color name="tileBgcolorLv256">#ffedcc61</color>
+    <color name="tileBgcolorLv512">#ffedc850</color>
+    <color name="tileBgcolorLv1024">#ffedc53f</color>
+    <color name="tileBgcolorLv2048">#ffedc22e</color>
+    <color name="tileBgcolorLvSuper">#ff3c3a32</color>
 
-    <color name="cardTextColorLv2">#ff776e65</color>
-    <color name="cardTextColorLv4">#ff776e65</color>
-    <color name="cardTextColorLvGt8">#fff9f6f2</color>
+    <color name="tileTextColorLv2">#ff776e65</color>
+    <color name="tileTextColorLv4">#ff776e65</color>
+    <color name="tileTextColorLvGt8">#fff9f6f2</color>
 
     <color name="gridBgcolor">#ff776e65</color>
 

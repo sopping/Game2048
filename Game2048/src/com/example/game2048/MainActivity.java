@@ -2,14 +2,18 @@ package com.example.game2048;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.os.storage.StorageManager;
 import android.view.Menu;
 import android.widget.TextView;
+
+import com.example.game2048.util.Actuator;
+import com.example.game2048.util.GameManager;
+import com.example.game2048.util.InputManager;
+import com.example.game2048.util.LocalStorageManager;
 
 public class MainActivity extends Activity {
 
     private static MainActivity mainActivity = null;
-    private TextView tvScore;
-    private long score = 0;
 
     public MainActivity() {
         mainActivity = this;
@@ -20,7 +24,13 @@ public class MainActivity extends Activity {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-        tvScore = (TextView) findViewById(R.id.score);
+
+        LocalStorageManager storageManager = new LocalStorageManager(getMainActivity());
+        InputManager inputManager = new InputManager(getMainActivity());
+        Actuator actuator = new Actuator(getMainActivity());
+
+        new GameManager(R.integer.size, inputManager, storageManager, actuator);
+
 	}
 
 	@Override
@@ -31,20 +41,6 @@ public class MainActivity extends Activity {
 
     public static MainActivity getMainActivity() {
         return mainActivity;
-    }
-
-    public void addScore(long score) {
-        this.score += score;
-        showScore();
-    }
-
-    public void clearScore(){
-        this.score = 0;
-        showScore();
-    }
-
-    private void showScore(){
-        tvScore.setText(score + "");
     }
 }
 

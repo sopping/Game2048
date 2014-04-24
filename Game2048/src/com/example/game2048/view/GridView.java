@@ -9,6 +9,8 @@ import android.widget.GridLayout;
  */
 public class GridView extends GridLayout{
 
+    private int gridWidth;
+
     public GridView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
@@ -24,7 +26,11 @@ public class GridView extends GridLayout{
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int minSpec = Math.min(widthMeasureSpec, heightMeasureSpec);
+        gridWidth = minSpec;
         super.onMeasure(minSpec, minSpec);
     }
 
+    public int getGridWidth() {
+        return gridWidth;
+    }
 }
